@@ -1,0 +1,1 @@
+link para a biblioteca publicada: https://pypi.org/project/trabalho-individual-2022-2-gces-ricardoloureiro/
