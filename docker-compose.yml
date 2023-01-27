@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: lappis
+      MONGO_INITDB_ROOT_PASSWORD: lappis
+    ports: 
+      - 27017:27017
+
+  app:
+    image: app:final
+    build:
+      context: src
+      dockerfile: dockerfile
+    command: ["python", "main.py"]
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
