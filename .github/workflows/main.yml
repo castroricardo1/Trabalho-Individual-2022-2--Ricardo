@@ -1,0 +1,25 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Poetry
+      run: |
+        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+        source $HOME/.poetry/env
+    - name: Install dependencies
+      run: poetry install
+    - name: Build
+      run: poetry build
+    - name: Test
+      run: poetry run pytest
+    - name: Lint
+      run: poetry run flake8
+    - name: Build documentation
+      run: poetry run sphinx-build -b html docs docs/_build
