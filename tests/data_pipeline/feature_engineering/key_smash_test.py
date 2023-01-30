@@ -1,6 +1,6 @@
 import pytest
 from statistics import mean
-from SEU__MODULO.data_pipeline.feature_engineering.key_smash import KeySmash
+from key_smash import KeySmash
 
 @pytest.mark.parametrize("text, expected", [
     ("PUENTECILLA KM. 1.7", 1.121212121212121),

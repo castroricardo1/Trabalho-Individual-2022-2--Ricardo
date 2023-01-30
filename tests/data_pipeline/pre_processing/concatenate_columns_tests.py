@@ -1,7 +1,7 @@
 
 import pandas as pd
 import pytest
-from SEU__MODULO.data_pipeline.pre_processing.concatenate_columns import get_concatenated_column
+from concatenate_columns import get_concatenated_column
 # Test cases that should pass
 passing_test_cases = [
     {'csv': pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]}), 'columns': 'col1', 'column_name': 'new_col', 'expected': pd.DataFrame({'new_col': [1, 2, 3]})},
