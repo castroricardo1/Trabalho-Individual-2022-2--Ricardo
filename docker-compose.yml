@@ -21,3 +21,30 @@ services:
       - 8000:8000
     depends_on:
       - mongo
+
+  postgressDB:
+    image: postgres:latest
+    container_name: metabase
+    restart: always
+    environment:
+            POSTGRES_DB: metabase
+            POSTGRES_USER: lappis
+            POSTGRES_PASSWORD: lappis
+
+  metabase:
+    image: metabase
+    container_name: metabase
+    restart: always
+    environment:
+            MB_DB_TYPE: postgres
+            MB_DB_DBNAME: metabase
+            MB_DB_PORT: 5432
+            MB_DB_USER: lappis
+            MB_DB_PASS: lappis
+            MB_DB_HOST: postgressDB
+    depends_on:
+            - postgressDB
+    volumes:
+            - .:/metabase
+    ports:
+            - 3000:3000
